@@ -1,0 +1,109 @@
+<div class="container mt-4">
+  <div class="card shadow">
+    <div
+      class="card-header text-white background-purple"
+    >
+      <h5 class="mb-0">
+        <i [ngClass]="isEditing ? 'bi-pencil-square' : 'bi-plus-square'"></i>
+        {{ isEditing ? "Editar Producto" : "Nuevo Producto" }}
+      </h5>
+    </div>
+    <div class="card-body">
+      <div *ngIf="isLoading" class="d-flex justify-content-center my-4">
+        <div class="spinner-border text-success" role="status">
+          <span class="visually-hidden">Cargando...</span>
+        </div>
+      </div>
+      <form *ngIf="!isLoading" (ngSubmit)="onSubmit()" class="needs-validation" novalidate>
+        <div class="row">
+          <!-- Primera columna -->
+          <div class="col-md-6 mb-3">
+            <!-- Category -->
+            <label for="category" class="form-label">Categoría</label>
+            <select
+              id="category"
+              class="form-select form-select-sm"
+              [(ngModel)]="product.category"
+              name="category"
+              required
+            >
+              <option *ngFor="let categoria of categorias" [value]="categoria.id">
+                {{ categoria.nombre }}
+              </option>
+            </select>
+          </div>
+
+          <!-- Name -->
+          <div class="col-md-6 mb-3">
+            <label for="name" class="form-label">Nombre del Producto</label>
+            <input
+              type="text"
+              id="name"
+              class="form-control form-control-sm"
+              [(ngModel)]="product.name"
+              name="name"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="row">
+          <!-- Segunda columna -->
+          <div class="col-md-6 mb-3">
+            <!-- Price -->
+            <label for="price" class="form-label">Precio</label>
+            <input
+              type="number"
+              id="price"
+              class="form-control form-control-sm"
+              [(ngModel)]="product.price"
+              name="price"
+              step="0.01"
+              required
+            />
+          </div>
+
+          <!-- Stock -->
+          <div class="col-md-6 mb-3">
+            <label for="stock" class="form-label">Stock</label>
+            <input
+              type="number"
+              id="stock"
+              class="form-control form-control-sm"
+              [(ngModel)]="product.stock"
+              name="stock"
+              required
+            />
+          </div>
+        </div>
+
+        <!-- Description -->
+        <div class="mb-3">
+          <label for="description" class="form-label">Descripción</label>
+          <textarea
+            id="description"
+            class="form-control form-control-sm"
+            [(ngModel)]="product.description"
+            name="description"
+            rows="3"
+            required
+          ></textarea>
+        </div>
+
+        <!-- Buttons -->
+        <div class="text-end">
+          <button type="submit" class="btn btn-primary me-2">
+            <i class="bi-save"></i> Grabar
+          </button>
+          <button
+            type="button"
+            class="btn btn-secondary "
+            routerLink="/productos"
+          >
+            <i class="bi-x-circle"></i> Cancelar
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

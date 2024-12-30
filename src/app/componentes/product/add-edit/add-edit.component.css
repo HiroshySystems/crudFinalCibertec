@@ -1,0 +1,35 @@
+.bg-purple {
+  background-color: #6a0dad;
+}
+
+.form-label {
+  font-weight: bold;
+}
+
+.card {
+  border-color: #6a0dad;
+}
+
+.btn-primary {
+  background-color: #001f54;
+  border-color: #001f54;
+}
+
+.btn-primary:hover {
+  background-color: #002d74;
+  border-color: #002d74;
+}
+
+.btn-secondary {
+  background-color: #6a0dad;
+  border-color: #6a0dad;
+}
+
+.btn-secondary:hover {
+  background-color: #7c1fb0;
+  border-color: #7c1fb0;
+}
+
+.background-purple {
+  background-color: #002d74;
+}

@@ -1,0 +1,67 @@
+<div class="container-fluid">
+  <div class="row">
+    <!-- Título y acciones -->
+    <div class="col-12 mb-3 d-flex justify-content-between align-items-center">
+      <!-- Botón para retornar al título -->
+      <button 
+        class="go-titulo-btn btn" 
+        routerLink="/">
+        Retornar al título
+      </button>
+
+      <!-- Título -->
+      <h2 class="text-purpura">Listado de Productos</h2>
+
+      <div class="d-flex align-items-center">
+        <!-- Filtro por categoría -->
+        <select class="form-select me-3" [(ngModel)]="selectedCategory" (change)="filterByCategory()">
+          <option value="">Filtrar por categoría</option>
+          <option *ngFor="let categoria of categorias" [value]="categoria.id">
+            {{ categoria.nombre }}
+          </option>
+        </select>
+        <!-- Botón de agregar producto -->
+        <button class="btn add-btn" routerLink="/addProducto">Agregar Producto</button>
+      </div>
+    </div>
+
+    <!-- Tabla de productos -->
+    <div class="col-12">
+      <div *ngIf="isLoading" class="d-flex justify-content-center my-4">
+        <div class="spinner-border text-success" role="status">
+          <span class="visually-hidden">Cargando...</span>
+        </div>
+      </div>
+      <div class="table-responsive">
+        <table *ngIf="!isLoading" class="table table-bordered table-striped table-hover border-danger table-sm">
+          <thead class="table-dark">
+            <tr>
+              <th class="w-auto">Acciones</th>
+              <th class="w-30">Nombre</th>
+              <th class="w-20">Precio</th>
+              <th class="w-20">Stock</th>
+              <th class="w-20">Categoría</th>              
+            </tr>
+          </thead>
+          <tbody class="table-group-divider">
+            <tr *ngFor="let product of filteredProducts">
+              <td>
+                <button class="btn edit-btn" routerLink="/editProducto/{{product.id}}">
+                  <i class="bi bi-pencil"></i>
+                </button>
+                <button class="btn del-btn" (click)="deleteProduct(product.id)">
+                  <i class="bi bi-trash"></i>
+                </button>
+              </td>
+              <td>{{ product.name }}</td>
+              <td>{{ product.price | currency:'S/.' }}</td>
+              <td>{{ product.stock }}</td>
+              <td>{{ product.category }}</td>              
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      
+    </div>
+  </div>
+</div>

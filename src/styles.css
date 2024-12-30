@@ -1,1 +1,31 @@
 /* You can add global styles to this file, and also import other style files */
+.text-sombreado {
+    color: #FFF;
+    -webkit-text-stroke: 1px #3a07f0; /* Borde blanco alrededor del texto */
+    text-stroke: 1px #3a07f0;
+    padding: 1px;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    animation: shadowAnimation 1s infinite alternate;
+  }
+  .text-purpura {
+    color: #FFF;
+    -webkit-text-stroke: 2px #1a237e; /* Borde blanco alrededor del texto */
+    text-stroke: 2px #1a237e;
+    padding: 1px;
+    font-weight: bold;
+    color: white;
+    /* cursor: pointer; */
+    /* animation: shadowAnimation 1s infinite alternate; */
+  }
+
+  
+  @keyframes shadowAnimation {
+    0% {
+      text-shadow: 1px 1px 2px rgba(106, 27, 154, 1);
+    }
+    100% {
+      text-shadow: 4px 4px 6px rgb(0, 0, 0);
+    }
+  }
